@@ -54,3 +54,5 @@ let locations = [{
     pokemart_id: 9,
     pokemons: []
 }]
+
+export { locations }
