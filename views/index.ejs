@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    
+</head>
+<body>
+    <div id="app">
+        <nav>
+        <a></a>
+        </nav>
+    
+        <h1>Name: <%= name %></h1>
+        <h3>Money: <%= money %></h3>
+        <h3>Location: <%= location%></h3>
+        <h3>Backpack: <%= backpack %></h3>
+        <h3>Party: <%= party %></h3>
+        <h3><%- buy_link %></h3>
+    
+      
+        <form id="updateMoneyForm" action="/mart/users/<%= id %>/money/" method="POST" onsubmit="updateAction()">
+            <input type="hidden" name="_method" value="POST">
+            <input type="text" id="moneyInput" name="money" value="100"> <!-- Example value to add to money -->
+            <input type="hidden" name="location" value="mart">
+            <input type="hidden" name="backpack" value="<%= backpack %>">
+            
+            <button type="submit">Update Money</button>
+        </form>
+    </div>
+
+    <script>
+        function updateAction() {
+            const moneyValue = document.getElementById('moneyInput').value;
+            const form = document.getElementById('updateMoneyForm');
+            form.action = `/mart/users/<%= id %>/money/${moneyValue}`;
+        }
+    </script>
+
+</body>
+</html>

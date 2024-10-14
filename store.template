@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>#name#</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <div id="app">
+    <nav>
+    <a></a>
+    </nav>
+
+      <h1>Name: #name#</h1>
+      <h3>Money: #money#</h3>
+      <h3>Location: #location#</h3>
+
+    </div>
+  </body>
+</html>

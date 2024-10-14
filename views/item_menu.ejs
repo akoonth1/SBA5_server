@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+
+    <div id="app">
+        <nav>
+        <a></a>
+        </nav>
+    
+        <div class="container">
+            <h1>Name: <%= name %></h1>
+            <h3>Price: <%= price %></h3>
+            <h3>Description: <%= description %></h3>
+            <h3>Type: <%= type %></h3>
+            <h3>Effect: <%= effect %></h3>
+            <div>
+                <%- nextItemLink %>
+        </div>
+
+        <form id="buyItemForm" action="/mart/users/<%= user_id %>/items/<%= id %>" method="POST">
+            <input type="hidden" name="user_id" value="<%= user_id %>">
+            <input type="hidden" name="item_id" value="<%= id %>">
+            <button type="submit">Buy Item</button>
+        </form>
+
+</body>
+</html>
