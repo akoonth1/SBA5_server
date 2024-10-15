@@ -15,7 +15,7 @@
             <a href='/mart/users/<%= id %>/pokemon'" class="button">Get Pokemon</a>
             <a href='/mart/newuser' class="button">Add New User</a>
             <a href='/mart/newitem' class="button">Add New Item</a>
-            <a href='/mart/users/<%= id %>' class="button">Users</a>
+            <a href='/mart/users/' class="button">All Users</a>
         </nav>
     
         <h1>Name: <%= name %></h1>
@@ -37,7 +37,7 @@
   
     </div>
 
-    <form action="/mart/users/<%= id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
+    <form action="/mart/users/<%= id %>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
         <input type="hidden" name="_method" value="DELETE">
         <button type="submit" class="button delete-button">Delete User</button>
     </form>

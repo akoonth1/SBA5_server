@@ -6,12 +6,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
  const router = express.Router();
-// router.use(express.static(path.join(__dirname, 'public')));
-
-//import methodOverride from 'method-override';
 
 class Item_New {
     constructor(id, name, price, description, type, effect) {
@@ -148,8 +143,12 @@ router.post('/newitem', (req, res) => {
 
 //json data for users to check
 router.get('/users', (req, res) => {
-    res.json(users);
+    let user_list = users.map(user => {
+        return {id: user.id, name: user.name, money: user.money, location: user.location, backpack: user.backpack, party: user.party};
+    });
+    res.render('all', { users: user_list });
 });
+
 
 //json data for items to check
 router.get('/items', (req, res) => {

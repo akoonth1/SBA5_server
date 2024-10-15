@@ -7,10 +7,10 @@ async function getpokemon() {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            const speciesData = await response.json();
-            const flavorTextEntry = await speciesData.flavor_text_entries.find(entry => entry.language.name === 'en');
+            let speciesData = await response.json();
+            let flavorTextEntry = await speciesData.flavor_text_entries.find(entry => entry.language.name === 'en');
             console.log(flavorTextEntry.flavor_text);
-            return  "sdsds";
+            return await flavorTextEntry.flavor_text;
         } catch (error) {
             console.error('There has been a problem with your fetch operation:', error);
         }
@@ -113,19 +113,10 @@ document.getElementById("pokemonForm").addEventListener("submit", function(event
 
 
 
-{/* <script>
-    function updateAction() {
-        const pokemonNameValue = document.getElementById('pokemonNameInput').value;
-        const form = document.getElementById('pokemonForm');
-        form.action = `/submit-pokemon/${pokemonNameValue}`;
-    }
-</script> */}
-
-
 
 
 
 }
 
-// Call the function to fetch the data
-getpokemon();
+
+ getpokemon();
