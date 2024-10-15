@@ -41,94 +41,10 @@ app.use(bodyParser.json({ extended: true }));
 app.use(methodOverride('_method'));
 
 
-//router.use(express.static(path.join(__dirname, 'public')));
-
-// Body P
 
 //Routes
-// app.get('/users', (req, res) => {
-//     res.json(users);
-//     });
-    
+
 app.use('/mart', router);
-
-
-
-// //View Engine Setup
-// app.engine('template', (filePath, options, callback) => {
-//     fs.readFile(filePath, (err, content) => {
-//     if (err) return callback(new Error(err));
-//     const rendered = content.toString().replace(/{{([^{}]*)}}/g, (match, group) => {
-//     return options[group] || '';
-//     });
-//     return callback(null, rendered);
-//     });
-
-
-// });
-
-
-// app.set('views', './views'); // specify the views directory
-// app.set('view engine', 'template'); // register the template engine
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

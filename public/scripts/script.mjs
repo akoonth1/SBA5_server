@@ -9,8 +9,12 @@ async function getpokemon() {
             }
             let speciesData = await response.json();
             let flavorTextEntry = await speciesData.flavor_text_entries.find(entry => entry.language.name === 'en');
-            console.log(flavorTextEntry.flavor_text);
-            return await flavorTextEntry.flavor_text;
+            let ft = flavorTextEntry.flavor_text
+            
+         ft= ft.replace(/[\n\r\t↑]/g, ' ').trim();
+         console.log(ft);
+
+            return await ft+"test";
         } catch (error) {
             console.error('There has been a problem with your fetch operation:', error);
         }
@@ -47,41 +51,41 @@ appDiv.appendChild(select);
 
 // Function to load Pokémon data
 async function loadPokemonData(url) {
-   await fetch(url)
-        .then(response => response.json())
-        .then(pokemonData => {
-            console.log(pokemonData);
+    try {
+        const response = await fetch(url);
+        const pokemonData = await response.json();
+        console.log(pokemonData);
 
-            // Clear previous Pokémon data
-            const previousPokemon = document.getElementById('pokemonDetails');
-            if (previousPokemon) {
-                previousPokemon.remove();
-            }
+        // Clear previous Pokémon data
+        const previousPokemon = document.getElementById('pokemonDetails');
+        if (previousPokemon) {
+            previousPokemon.remove();
+        }
 
-            // Create a div to display Pokémon details
-            const pokemon = document.createElement('div');
-            pokemon.id = 'pokemonDetails';
-            pokemon_name_for_adding = pokemonData.name;
-            pokemon.innerHTML = `
-                <h2>${pokemonData.name}</h2>
-                <img src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
-                <p>Height: ${pokemonData.height}</p>
-                <p>Weight: ${pokemonData.weight}</p>
-                <p>Abilities: ${pokemonData.abilities.map(ability => ability.ability.name).join(', ')}</p>
-                <p>Types: ${pokemonData.types.map(type => type.type.name).join(', ')}</p>
-                <p>Species: ${pokemonData.species.url}</p>
+        // Fetch the flavor text
+        const flavorText = await get_pokemon_description(pokemonData.species.url);
+
+
+
+        // Create a div to display Pokémon details
+        const pokemon = document.createElement('div');
+        pokemon.id = 'pokemonDetails';
+        pokemon_name_for_adding = pokemonData.name;
+        pokemon.innerHTML = `
+            <h2>${pokemonData.name}</h2>
+            <img src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
+            <p>Height: ${pokemonData.height}</p>
+            <p>Weight: ${pokemonData.weight}</p>
+            <p>Abilities: ${pokemonData.abilities.map(ability => ability.ability.name).join(', ')}</p>
+            <p>Types: ${pokemonData.types.map(type => type.type.name).join(', ')}</p>
+            <p>Species: ${pokemonData.species.url}</p>
+            <p>Flavor Text: ${flavorText}</p>
             
-                
-
-            `;
-
-                // <p>Flavor Text: ${get_pokemon_description(pokemonData.species.url)}</p>
-                // async error leads to improper render of text --promise is not resolved before the function returns
-            appDiv.appendChild(pokemon);
-        })
-        .catch(error => {
-            console.error('Error fetching Pokémon data:', error);
-        });
+        `;
+        appDiv.appendChild(pokemon);
+    } catch (error) {
+        console.error('Error fetching Pokémon data:', error);
+    }
 }
 
 // Load the information for the first option in the selector
