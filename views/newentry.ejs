@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <div id="app">
+        <nav>
+            <a href="<%= link %>">full item list</a>
+        </nav>
+    
+        <h1><%= title %></h1>
+        <form action="<%= action %>" method="POST">
+            <% fields.forEach(field => { %>
+                <label for="<%= field.id %>"><%= field.label %>:</label>
+                <input type="<%= field.type %>" id="<%= field.id %>" name="<%= field.name %>" value="<%= field.value %>" <%= field.required ? 'required' : '' %>><br><br>
+            <% }) %>
+            <button type="submit"><%= buttonText %></button>
+        </form>
+    </div>
+</body>
+</html>

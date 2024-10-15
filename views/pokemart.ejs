@@ -5,11 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/styles/style.css">
-    <script src="/scripts/script.mjs"defer></script>
+    <script src="/scripts/script.mjs" defer></script>
 </head>
 <body>
+    <div class="container">
+        
+        <nav>
+            <a href="/mart/users/<%= id %>/edit" class="button">Edit User</a>
+            <a href='/mart/users/<%= id %>/items/1'" class="button">Buy Items</a>
+            <a href='/mart/newuser' class="button">Add New User</a>
+            <a href='/mart/newitem' class="button">Add New Item</a>
+            <a href='/mart/users/<%= id %>' class="button">Users</a>
+        </nav>
+        <form id="pokemonForm" action="/mart/users/<%= id %>/submit-pokemon" method="POST">
+            <input type="hidden" id="pokemonNameInput" name="pokemonName" value="bear">
+            <button type="submit">Submit Pokémon</button>
+        </form>
+        
+
+<div id="app">
 
 
-    
+
+</div>
+      
+
+
+</div>
+      
+
 </body>
 </html>
