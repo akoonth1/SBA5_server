@@ -49,6 +49,7 @@ This is a small application that will allow you to add users and items to existi
 - Express
 - Nodemon
 - Method-override'
+-ejs view engine
 
 ### How to Get Started
 1. Clone the repository:

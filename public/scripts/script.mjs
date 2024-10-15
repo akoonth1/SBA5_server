@@ -70,10 +70,13 @@ async function loadPokemonData(url) {
                 <p>Abilities: ${pokemonData.abilities.map(ability => ability.ability.name).join(', ')}</p>
                 <p>Types: ${pokemonData.types.map(type => type.type.name).join(', ')}</p>
                 <p>Species: ${pokemonData.species.url}</p>
-                <p>Flavor Text: ${get_pokemon_description(pokemonData.species.url)}</p>
+            
                 
 
             `;
+
+                // <p>Flavor Text: ${get_pokemon_description(pokemonData.species.url)}</p>
+                // async error leads to improper render of text --promise is not resolved before the function returns
             appDiv.appendChild(pokemon);
         })
         .catch(error => {
